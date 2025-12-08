@@ -10,13 +10,6 @@ At its core, ICSThreatQA implements four complementary QA architectures: a stand
 
 The repository includes a Streamlit-based web interface for single and batch queries, integration with open-source LLMs (e.g., Mistral-7B, Zephyr-7B), and OpenAI-powered KG-RAG via GPT-4o-mini. ICSThreatQA is intended for researchers, students, and security analysts who want to experiment with RAG pipelines, benchmark QA models in the ICS domain, or prototype decision-support tools for OT/ICS security operations.
 
-ICSThreatQA turns static threat knowledge (e.g., **[MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)**) into an **interactive QA system** that helps analysts with:
-
-- Threat detection  
-- Incident response  
-- Mapping logs/events to ATT&CK techniques  
-- Multi-hop reasoning over ICS-specific TTPs  
-
 ## ✨ Key Features
 
 - **ICS-focused QA**
@@ -27,11 +20,6 @@ ICSThreatQA turns static threat knowledge (e.g., **[MITRE ATT&CK for ICS](https:
   2. **Keyword-Based RAG** – Keyword extraction + keyword-driven retrieval.
   3. **Hybrid RAG** – Combines keyword + semantic retrieval for better precision/recall.
   4. **KG-RAG** – Knowledge Graph–augmented RAG with multi-hop reasoning.
-
-- **Curated ICS QA Dataset**
-  - **620 expert-validated QA pairs** (factual, contrastive, inferential, opinion).
-  - Public dataset:  
-    👉 https://github.com/mahend72/ICSThreatQA-Dataset
 
 - **Analyst-Friendly Web UI**
   - Built with **Streamlit**.
@@ -56,14 +44,6 @@ Dataset repository:
 - Four query types: `Factual`, `Contrastive`, `Inferential`, `Opinion-based`
 - Expert-reviewed ground truth answers.
 - Suitable as a benchmark for ICS threat QA.
-
-## 🧪 Evaluation (Summary)
-
-ICSThreatQA is evaluated using:
-
-- **RAGAS metrics**: `Faithfulness`, `Answer Relevance`, `Context Precision/Recall`, `Context Relevancy`, `Context Entity Recall`, `Answer Semantic Similarity`, `Answer Correctness`
-- **Other metrics**: `BLEU-4`, `ROUGE-L`, `Human expert ratings (usefulness, completeness, trustworthiness)`
-
 
 ## 🌐 Live Demo
 
@@ -166,66 +146,12 @@ Run all questions through the selected model.
       - few_shot_answers
       - zero_shot_contexts.
 
-## 🔧 Use Case Study: ICSThreatQA in Practice
+## 🧪 Evaluation (Summary)
 
-### 1. Investigating a Power Grid Intrusion (Industroyer Scenario)
+ICSThreatQA is evaluated using:
 
-**Scenario:**  
-A SOC team in an energy utility detects unusual commands being sent to substation equipment over IEC-104. The team suspects activity related to known ICS malware families.
-
-**How ICSThreatQA Helps:**
-
-1. The analyst submits the query:  
-   _“Which malware has been used to disrupt power grid substations and what techniques does it use?”_
-2. ICSThreatQA (via **KG-RAG** or **Hybrid RAG**) retrieves relevant MITRE ATT&CK for ICS entries and threat reports linked to **Industroyer**.
-3. The system returns:
-   - The malware family (**Industroyer / CrashOverride**).
-   - Key techniques (e.g., manipulation of control signals, protocol abuse over IEC-104).
-   - Linked tactics (e.g., Impact, Execution).
-   - Recommended mitigations (e.g., network segmentation, allowlisting, protocol-aware monitoring).
-4. The analyst uses this structured answer to:
-   - Confirm that observed behaviour matches known TTPs.
-   - Prioritise detection rules and containment steps focusing on IEC-104 traffic and substation assets.
-   - Brief incident response teams using a concise, technically grounded summary.
-
-**Value:**  
-ICSThreatQA reduces time spent manually searching documentation and enables faster mapping from raw telemetry to known ICS threat behaviours.
-
----
-
-### 2. Analysing Safety System Targeting (TRITON Scenario)
-
-**Scenario:**  
-A petrochemical company is reviewing its exposure to threats that target **Safety Instrumented Systems (SIS)** such as Triconex controllers.
-
-**How ICSThreatQA Helps:**
-
-1. The security architect asks:  
-   _“Which threat groups have deployed malware against SIS controllers, and how did they attack?”_
-2. ICSThreatQA identifies **TEMP.Veles (Xenotime)** and its use of **TRITON** malware.
-3. The answer summarises:
-   - Attack goals (disabling or manipulating SIS logic).
-   - Techniques used (unauthorised logic downloads, modification of safety controller programs).
-   - Potential consequences (loss of safety integrity, physical damage).
-   - Mapped mitigations (secure firmware updates, strict engineering workstation control, SIS monitoring).
-
-**Value:**  
-The security team can quickly align risk assessments and hardening plans with specific, documented TTPs instead of relying on generic “malware” descriptions.
-
----
-
-### 3. Day-to-Day SOC Triage and Knowledge Support
-
-Beyond historic incidents, ICSThreatQA supports **everyday analyst workflows**:
-
-- **Quick lookups:**  
-  “What mitigations apply to technique T0830?”  
-- **Comparisons:**  
-  “How do Sandworm’s techniques differ from Lazarus Group in ICS environments?”  
-- **What-if analysis:**  
-  “What are the likely impacts if an attacker uses unauthorised command messages in a SCADA network?”
-
-By combining **RAG**, **keyword retrieval**, **hybrid search**, and **knowledge-graph reasoning**, ICSThreatQA acts as an always-on assistant that explains ICS threats in natural language, grounded in structured threat intelligence.
+- **RAGAS metrics**: `Faithfulness`, `Answer Relevance`, `Context Precision/Recall`, `Context Relevancy`, `Context Entity Recall`, `Answer Semantic Similarity`, `Answer Correctness`
+- **Other metrics**: `BLEU-4`, `ROUGE-L`, `Human expert ratings (usefulness, completeness, trustworthiness)`
 
 
 ## 📚 Citation
