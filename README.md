@@ -196,9 +196,25 @@ Run all questions through the selected model.
 
 If you use ICSThreatQA or the ICSThreatQA dataset in your research, please cite the paper:
 
+```bash
 @article{rani2025icsthreatqa,
   title   = {ICSThreatQA: A Knowledge-Graph Enhanced Question Answering Model for Industrial Control System Threat Intelligence},
   author  = {Rani, Ruby and Kumar, Mahender and Epiphaniou, Gregory and Maple, Carsten},
   journal = {Elsevier Expert Systems with Applications},
   year    = {2025}
 }
+```
+
+## Contributor 
+  - [Ruby Rani](https://scholar.google.com/citations?hl=en&user=oNb02okAAAAJ&view_op=list_works)
+  - [Mahender Kumar](https://scholar.google.com/citations?user=Ppmct6EAAAAJ&hl=en)
+  - [Gregory Epiphaniou](https://warwick.ac.uk/fac/sci/wmg/about/our-people/profile/?wmgid=2175)
+  - [Carsten Maple](https://warwick.ac.uk/fac/sci/wmg/about/our-people/profile/?wmgid=1102)
+
+## Acknowledgements
+
+This work is supported by:
+
+> Project EP/V051040/1
+> Responsive Additive Manufacturing to Overcome Natural and Attack-based Disruption
+> funded by the Engineering and Physical Sciences Research Council (EPSRC).
