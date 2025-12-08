@@ -6,6 +6,11 @@ This repository contains the implementation of **ICSThreatQA**, a knowledge-grap
   <img src="Images/ISCthreat-arch.png" alt="ICSThreatQA as a Middleware Interface" width="1000">
 </p>
 
+ICSThreatQA is a research-driven framework that transforms static ICS threat knowledge into an interactive, analyst-ready Question Answering (QA) system. Built around the MITRE ATT&CK for ICS knowledge base, it helps cybersecurity practitioners explore attacker TTPs, map events to techniques, and reason about threats using natural language queries instead of manual matrix navigation or document searching.
+
+At its core, ICSThreatQA implements four complementary QA architectures: a standard Retrieval-Augmented Generation (RAG) model, a keyword-based retriever, a hybrid retriever that combines keyword and semantic search, and a Knowledge Graph–enhanced RAG (KG-RAG) that performs multi-hop reasoning over tactics, techniques, malware, mitigations, and assets. These models are evaluated on a curated dataset of 620 expert-validated QA pairs specifically designed for ICS threat intelligence.
+
+The repository includes a Streamlit-based web interface for single and batch queries, integration with open-source LLMs (e.g., Mistral-7B, Zephyr-7B), and OpenAI-powered KG-RAG via GPT-4o-mini. ICSThreatQA is intended for researchers, students, and security analysts who want to experiment with RAG pipelines, benchmark QA models in the ICS domain, or prototype decision-support tools for OT/ICS security operations.
 
 ICSThreatQA turns static threat knowledge (e.g., **[MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)**) into an **interactive QA system** that helps analysts with:
 
@@ -130,20 +135,17 @@ Then open the URL printed in the terminal (typically: `http://localhost:8501`).
 ### Single Query
 
 1. Select a Model:
-  - Retrieval Augmentation Generation (RAG)
-  - Large Language Model (LLM)
-  - Keyword-Based Retrieval
-  - Combined Retrieval Method (Hybrid)
-  - Knowledge Graph RAG
-  - Online Learning-based KG RAG
-
+    - Retrieval Augmentation Generation (RAG)
+    - Large Language Model (LLM)
+    - Keyword-Based Retrieval
+    - Combined Retrieval Method (Hybrid)
+    - Knowledge Graph RAG
+    - Online Learning-based KG RAG
 2. Choose Single query.
-
 3. Type your question (e.g.):
-  - `What malware is associated with the 'Industroyer' attack?`
-  - `Which group is known for using 'TRITON' malware?`
-  - `How do Sandworm techniques differ from Lazarus Group?`
-
+    - `What malware is associated with the 'Industroyer' attack?`
+    - `Which group is known for using 'TRITON' malware?`
+    - `How do Sandworm techniques differ from Lazarus Group?`
 4. Click Get Answer.
 
 The app will show zero-shot / few-shot answers and (where applicable) retrieved context.
@@ -187,8 +189,4 @@ If you use ICSThreatQA or the ICSThreatQA dataset in your research, please cite 
 
 ## Acknowledgements
 
-This work is supported by:
-
-> Project EP/V051040/1
-> Responsive Additive Manufacturing to Overcome Natural and Attack-based Disruption
-> funded by the Engineering and Physical Sciences Research Council (EPSRC).
+> This work is supported by the Engineering and Physical Sciences Research Council (EPSRC) through project EP/V051040/1, “Responsive Additive Manufacturing to Overcome Natural and Attack-based Disruption.”
