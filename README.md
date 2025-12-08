@@ -153,9 +153,9 @@ Then open the URL printed in the terminal (typically: `http://localhost:8501`).
 
 ## 🧵 Usage
 
-# Single Query
+### Single Query
 
-Select a Model:
+1. Select a Model:
   - Retrieval Augmentation Generation (RAG)
   - Large Language Model (LLM)
   - Keyword-Based Retrieval
@@ -163,59 +163,42 @@ Select a Model:
   - Knowledge Graph RAG
   - Online Learning-based KG RAG
 
-Choose Single query.
+2. Choose Single query.
 
-Type your question:
+3. Type your question (e.g.):
+  - `What malware is associated with the 'Industroyer' attack?`
+  - `Which group is known for using 'TRITON' malware?`
+  - `How do Sandworm techniques differ from Lazarus Group?`
 
-What malware is associated with the 'Industroyer' attack?
-
-Which group is known for using 'TRITON' malware?
-
-How do Sandworm techniques differ from Lazarus Group?
-
-(If LLM mode) choose Mistral / Llama / Zephyr.
-
-Click Get Answer.
+4. Click Get Answer.
 
 The app will show zero-shot / few-shot answers and (where applicable) retrieved context.
 
-Bulk Queries (CSV)
+### Bulk Queries (CSV)
 
-Prepare a CSV with a column named questions.
-
-Choose Bulk queries (CSV file).
-
-Upload the CSV.
-
-Select model/approach.
-
-Click Process CSV.
+1. Prepare a CSV with a column named questions.
+2. Choose Bulk queries (CSV file).
+3. Upload the CSV.
+4. Select model/approach.
+5. Click Process CSV.
 
 The app will:
 
 Run all questions through the selected model.
 
-Add columns such as:
+  - Add columns such as:
+  - question_type
+      - zero_shot_answers
+      - few_shot_answers
+      - zero_shot_contexts.
 
-question_type
+## 📚 Citation
 
-zero_shot_answers
-
-few_shot_answers
-
-zero_shot_contexts
-
-etc.
-
-Provide a download link for the processed CSV.
-
-📚 Citation
-
-If you use ICSThreatQA or the ICSThreatQA dataset in your research, please cite the paper (placeholder BibTeX – update when formally published):
+If you use ICSThreatQA or the ICSThreatQA dataset in your research, please cite the paper:
 
 @article{rani2025icsthreatqa,
   title   = {ICSThreatQA: A Knowledge-Graph Enhanced Question Answering Model for Industrial Control System Threat Intelligence},
   author  = {Rani, Ruby and Kumar, Mahender and Epiphaniou, Gregory and Maple, Carsten},
-  journal = {Manuscript},
+  journal = {Elsevier Expert Systems with Applications},
   year    = {2025}
 }
