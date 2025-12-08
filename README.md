@@ -42,40 +42,6 @@ ICSThreatQA turns static threat knowledge (e.g., **[MITRE ATT&CK for ICS](https:
   - **GPT-4o-mini** – KG construction and KG-RAG reasoning (via OpenAI).
   - **SentenceTransformers + FAISS** – dense retrieval over ATT&CK data.
 
-## 🧠 Architecture Overview
-
-The ICSThreatQA framework includes:
-
-### 1. Standard RAG
-
-- Encodes ICS threat documents into embeddings (SentenceTransformer: `all-MiniLM-L6-v2`).
-- Uses **FAISS** for similarity search.
-- Mistral-7B generates answers grounded in retrieved passages.
-
-### 2. Keyword-Based RAG
-
-- Zephyr-7B extracts critical keywords from the user query.
-- Retrieves documents based on keyword matches.
-- Best for simple, direct questions.
-
-### 3. Hybrid RAG
-
-- Step 1: Keyword-based retrieval → candidate docs.  
-- Step 2: Semantic RAG refinement → filter by embedding similarity.  
-- Step 3: Mistral-7B → final answer from refined context.
-
-This balances **speed (keyword)** and **depth (semantic)**.
-
-### 4. KG-RAG (Knowledge Graph RAG)
-
-- Builds a **knowledge graph** from MITRE ATT&CK (ICS STIX data):
-  - Nodes: Tactics, Techniques, Malware, Groups, Assets, Mitigations, etc.
-  - Edges: `uses`, `mitigated-by`, `targets`, `attributed-to`, etc.
-- Uses **LlamaIndex**:
-  - `KnowledgeGraphIndex` for graph reasoning.
-  - `VectorStoreIndex` for hybrid retrieval.
-- GPT-4o-mini is used as the LLM for graph-based reasoning.
-
 ## 📊 Dataset
 
 Dataset repository:  
@@ -93,10 +59,8 @@ Dataset repository:
 ICSThreatQA is evaluated using:
 
 - **RAGAS metrics**: `Faithfulness`, `Answer Relevance`, `Context Precision/Recall`, `Context Relevancy`, `Context Entity Recall`, `Answer Semantic Similarity`, `Answer Correctness`
-
 - **Other metrics**: `BLEU-4`, `ROUGE-L`, `Human expert ratings (usefulness, completeness, trustworthiness)`
 
----
 
 ## 🌐 Live Demo
 
@@ -153,6 +117,11 @@ export HUGGINGFACEHUB_API_TOKEN="your_hf_token"
 ```bash
 streamlit run app.py
 ```
+
+<p align="center">
+  <img src="Images/Webapp.png" alt="Webapp" width="1000">
+</p>
+
 
 Then open the URL printed in the terminal (typically: `http://localhost:8501`).
 
