@@ -2,6 +2,11 @@
 
 This repository contains the implementation of **ICSThreatQA**, a knowledge-graph–enhanced Question Answering (QA) framework for **Industrial Control System (ICS)** threat intelligence.
 
+<p align="center">
+  <img src="Images/ICSThreatQA as a Middleware Interface.png" alt="ICSThreatQA as a Middleware Interface" width="500">
+</p>
+
+
 ICSThreatQA turns static threat knowledge (e.g., **[MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)**) into an **interactive QA system** that helps analysts with:
 
 - Threat detection  
