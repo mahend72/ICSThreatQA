@@ -1,14 +1,12 @@
 # ICSThreatQA: Knowledge-Graph Enhanced QA for ICS Threat Intelligence
 
-This repository contains the implementation of **ICSThreatQA**, a knowledge-graph–enhanced Question Answering (QA) framework for **Industrial Control System (ICS)** threat intelligence.
-
 <p align="center">
   <img src="Images/ISCthreat-arch.png" alt="ICSThreatQA as a Middleware Interface" width="1000">
 </p>
 
-ICSThreatQA is a research-driven framework that transforms static ICS threat knowledge into an interactive, analyst-ready Question Answering (QA) system. Built around the MITRE ATT&CK for ICS knowledge base, it helps cybersecurity practitioners explore attacker TTPs, map events to techniques, and reason about threats using natural language queries instead of manual matrix navigation or document searching.
+**ICSThreatQA** is a research-driven framework that transforms static ICS threat knowledge into an interactive, analyst-ready Question Answering (QA) system. Built around **[MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)** knowledge base, it helps cybersecurity practitioners explore attacker TTPs, map events to techniques, and reason about threats using natural language queries instead of manual matrix navigation or document searching.
 
-At its core, ICSThreatQA implements four complementary QA architectures: a standard Retrieval-Augmented Generation (RAG) model, a keyword-based retriever, a hybrid retriever that combines keyword and semantic search, and a Knowledge Graph–enhanced RAG (KG-RAG) that performs multi-hop reasoning over tactics, techniques, malware, mitigations, and assets. These models are evaluated on a curated dataset of 620 expert-validated QA pairs specifically designed for ICS threat intelligence.
+At its core, ICSThreatQA implements four complementary QA architectures: a standard Retrieval-Augmented Generation (RAG) model, a keyword-based retriever, a hybrid retriever that combines keyword and semantic search, and a Knowledge Graph–enhanced RAG (KG-RAG) that performs multi-hop reasoning over tactics, techniques, malware, mitigations, and assets. These models are evaluated on a curated [dataset of 620 expert-validated QA pairs](https://github.com/mahend72/ICSThreatQA-Dataset) specifically designed for ICS threat intelligence.
 
 The repository includes a Streamlit-based web interface for single and batch queries, integration with open-source LLMs (e.g., Mistral-7B, Zephyr-7B), and OpenAI-powered KG-RAG via GPT-4o-mini. ICSThreatQA is intended for researchers, students, and security analysts who want to experiment with RAG pipelines, benchmark QA models in the ICS domain, or prototype decision-support tools for OT/ICS security operations.
 
@@ -167,6 +165,68 @@ Run all questions through the selected model.
       - zero_shot_answers
       - few_shot_answers
       - zero_shot_contexts.
+
+## 🔧 Use Case Study: ICSThreatQA in Practice
+
+### 1. Investigating a Power Grid Intrusion (Industroyer Scenario)
+
+**Scenario:**  
+A SOC team in an energy utility detects unusual commands being sent to substation equipment over IEC-104. The team suspects activity related to known ICS malware families.
+
+**How ICSThreatQA Helps:**
+
+1. The analyst submits the query:  
+   _“Which malware has been used to disrupt power grid substations and what techniques does it use?”_
+2. ICSThreatQA (via **KG-RAG** or **Hybrid RAG**) retrieves relevant MITRE ATT&CK for ICS entries and threat reports linked to **Industroyer**.
+3. The system returns:
+   - The malware family (**Industroyer / CrashOverride**).
+   - Key techniques (e.g., manipulation of control signals, protocol abuse over IEC-104).
+   - Linked tactics (e.g., Impact, Execution).
+   - Recommended mitigations (e.g., network segmentation, allowlisting, protocol-aware monitoring).
+4. The analyst uses this structured answer to:
+   - Confirm that observed behaviour matches known TTPs.
+   - Prioritise detection rules and containment steps focusing on IEC-104 traffic and substation assets.
+   - Brief incident response teams using a concise, technically grounded summary.
+
+**Value:**  
+ICSThreatQA reduces time spent manually searching documentation and enables faster mapping from raw telemetry to known ICS threat behaviours.
+
+---
+
+### 2. Analysing Safety System Targeting (TRITON Scenario)
+
+**Scenario:**  
+A petrochemical company is reviewing its exposure to threats that target **Safety Instrumented Systems (SIS)** such as Triconex controllers.
+
+**How ICSThreatQA Helps:**
+
+1. The security architect asks:  
+   _“Which threat groups have deployed malware against SIS controllers, and how did they attack?”_
+2. ICSThreatQA identifies **TEMP.Veles (Xenotime)** and its use of **TRITON** malware.
+3. The answer summarises:
+   - Attack goals (disabling or manipulating SIS logic).
+   - Techniques used (unauthorised logic downloads, modification of safety controller programs).
+   - Potential consequences (loss of safety integrity, physical damage).
+   - Mapped mitigations (secure firmware updates, strict engineering workstation control, SIS monitoring).
+
+**Value:**  
+The security team can quickly align risk assessments and hardening plans with specific, documented TTPs instead of relying on generic “malware” descriptions.
+
+---
+
+### 3. Day-to-Day SOC Triage and Knowledge Support
+
+Beyond historic incidents, ICSThreatQA supports **everyday analyst workflows**:
+
+- **Quick lookups:**  
+  “What mitigations apply to technique T0830?”  
+- **Comparisons:**  
+  “How do Sandworm’s techniques differ from Lazarus Group in ICS environments?”  
+- **What-if analysis:**  
+  “What are the likely impacts if an attacker uses unauthorised command messages in a SCADA network?”
+
+By combining **RAG**, **keyword retrieval**, **hybrid search**, and **knowledge-graph reasoning**, ICSThreatQA acts as an always-on assistant that explains ICS threats in natural language, grounded in structured threat intelligence.
+
 
 ## 📚 Citation
 
