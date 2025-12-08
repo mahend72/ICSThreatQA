@@ -37,8 +37,6 @@ ICSThreatQA turns static threat knowledge (e.g., **[MITRE ATT&CK for ICS](https:
   - **GPT-4o-mini** – KG construction and KG-RAG reasoning (via OpenAI).
   - **SentenceTransformers + FAISS** – dense retrieval over ATT&CK data.
 
----
-
 ## 🧠 Architecture Overview
 
 The ICSThreatQA framework includes:
@@ -73,8 +71,6 @@ This balances **speed (keyword)** and **depth (semantic)**.
   - `VectorStoreIndex` for hybrid retrieval.
 - GPT-4o-mini is used as the LLM for graph-based reasoning.
 
----
-
 ## 📊 Dataset
 
 Dataset repository:  
@@ -83,15 +79,9 @@ Dataset repository:
 **Highlights:**
 
 - 620 QA pairs, grounded in MITRE ATT&CK for ICS.
-- Four query types:
-  - Factual
-  - Contrastive
-  - Inferential
-  - Opinion-based
+- Four query types: `Factual`, `Contrastive`, `Inferential`, `Opinion-based`
 - Expert-reviewed ground truth answers.
 - Suitable as a benchmark for ICS threat QA.
-
----
 
 ## 🧪 Evaluation (Summary)
 
@@ -105,7 +95,7 @@ ICSThreatQA is evaluated using:
 
 ## 🌐 Live Demo
 
-A live demo of ICSThreatQA is available at (Currently, the App is not working due to incompatibility; we are working on it.):
+A live demo of ICSThreatQA is available at:
 
 👉 https://huggingface.co/spaces/rubypnchl/KnowledgeMate  
 
@@ -116,7 +106,8 @@ Features:
 - Adjustable temperature and max token length.
 - Visual answer and context display.
 
----
+(Currently, the App is not working due to incompatibility; we are working on it.)
+
 
 ## ⚙️ Installation
 
@@ -144,36 +135,87 @@ If there is a `requirements.txt`:
 pip install -r requirements.txt
 ```
 
-Typical dependencies include:
-
-streamlit
-
-langchain, langchain-community
-
-faiss-cpu
-
-sentence-transformers
-
-llama-index
-
-openai
-
-pandas
-
-aiohttp
-
-scikit-learn
-
-numpy
-
-chardet
-
-4. Set API keys
+### 4. Set API keys
+```bash
 # OpenAI (for GPT-4o-mini / KG-RAG)
 export OPENAI_API_KEY="your_openai_api_key"
 
 # Hugging Face (for Mistral, Zephyr, etc.)
 export HUGGINGFACEHUB_API_TOKEN="your_hf_token"
+```
 
+## 🚀 Run the Web App
+```bash
+streamlit run app.py
+```
 
-(Use the equivalent on Windows PowerShell if needed.)
+Then open the URL printed in the terminal (typically: `http://localhost:8501`).
+
+## 🧵 Usage
+
+# Single Query
+
+Select a Model:
+  - Retrieval Augmentation Generation (RAG)
+  - Large Language Model (LLM)
+  - Keyword-Based Retrieval
+  - Combined Retrieval Method (Hybrid)
+  - Knowledge Graph RAG
+  - Online Learning-based KG RAG
+
+Choose Single query.
+
+Type your question:
+
+What malware is associated with the 'Industroyer' attack?
+
+Which group is known for using 'TRITON' malware?
+
+How do Sandworm techniques differ from Lazarus Group?
+
+(If LLM mode) choose Mistral / Llama / Zephyr.
+
+Click Get Answer.
+
+The app will show zero-shot / few-shot answers and (where applicable) retrieved context.
+
+Bulk Queries (CSV)
+
+Prepare a CSV with a column named questions.
+
+Choose Bulk queries (CSV file).
+
+Upload the CSV.
+
+Select model/approach.
+
+Click Process CSV.
+
+The app will:
+
+Run all questions through the selected model.
+
+Add columns such as:
+
+question_type
+
+zero_shot_answers
+
+few_shot_answers
+
+zero_shot_contexts
+
+etc.
+
+Provide a download link for the processed CSV.
+
+📚 Citation
+
+If you use ICSThreatQA or the ICSThreatQA dataset in your research, please cite the paper (placeholder BibTeX – update when formally published):
+
+@article{rani2025icsthreatqa,
+  title   = {ICSThreatQA: A Knowledge-Graph Enhanced Question Answering Model for Industrial Control System Threat Intelligence},
+  author  = {Rani, Ruby and Kumar, Mahender and Epiphaniou, Gregory and Maple, Carsten},
+  journal = {Manuscript},
+  year    = {2025}
+}
