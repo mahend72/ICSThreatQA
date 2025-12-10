@@ -28,10 +28,10 @@ The repository includes a Streamlit-based web interface for single and batch que
   - Supports multiple model backends.
 
 - **Multi-Model Backend**
-  - **Mistral-7B** – core RAG answering model.
-  - **Zephyr-7B** – keyword extraction for keyword & hybrid modes.
-  - **GPT-4o-mini** – KG construction and KG-RAG reasoning (via OpenAI).
-  - **SentenceTransformers + FAISS** – dense retrieval over ATT&CK data.
+  - **[Mistral-7B](https://mistral.ai/news/announcing-mistral-7b)** – core RAG answering model.
+  - **[Zephyr-7B](https://mistral.ai/news/announcing-mistral-7bZephyr-7B)** – keyword extraction for keyword & hybrid modes.
+  - **[GPT-4o-mini](https://platform.openai.com/docs/models/gpt-4o-mini)** – KG construction and KG-RAG reasoning (via OpenAI).
+  - **[SentenceTransformers](https://huggingface.co/sentence-transformers) + [FAISS](https://github.com/facebookresearch/faiss)** – dense retrieval over ATT&CK data.
 
 ## 📊 Dataset
 
