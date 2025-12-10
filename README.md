@@ -16,10 +16,10 @@ The repository includes a Streamlit-based web interface for single and batch que
   - Tailored to OT/ICS concepts: SCADA, PLCs, SIS, ICS malware, ATT&CK for ICS.
 
 - **Four QA Architectures**
-  1. **Standard RAG** – Embedding-based semantic retrieval (vector DB).
-  2. **Keyword-Based RAG** – Keyword extraction + keyword-driven retrieval.
-  3. **Hybrid RAG** – Combines keyword + semantic retrieval for better precision/recall.
-  4. **KG-RAG** – Knowledge Graph–augmented RAG with multi-hop reasoning.
+  - **Standard RAG** – Embedding-based semantic retrieval (vector DB).
+  - **Keyword-Based RAG** – Keyword extraction + keyword-driven retrieval.
+  - **Hybrid RAG** – Combines keyword + semantic retrieval for better precision/recall.
+  - **KG-RAG** – Knowledge Graph–augmented RAG with multi-hop reasoning.
 
 - **Analyst-Friendly Web UI**
   - Built with **Streamlit**.
